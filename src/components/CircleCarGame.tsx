@@ -18,8 +18,8 @@ export const CircleCarGame = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 600;
-    canvas.height = 400;
+    canvas.width = 800;
+    canvas.height = 600;
     drawCanvas();
   }, [points, carPosition, isWobbling, rotation]);
 
@@ -35,7 +35,7 @@ export const CircleCarGame = () => {
     // Draw road
     ctx.beginPath();
     ctx.moveTo(0, 500);
-    ctx.lineTo(canvas.width, 500);
+    ctx.lineTo(800, 500);
     ctx.strokeStyle = '#333';
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -48,7 +48,7 @@ export const CircleCarGame = () => {
         ctx.lineTo(point.x, point.y);
       });
       ctx.strokeStyle = '#000';
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 2;
       ctx.stroke();
     }
 
@@ -161,7 +161,7 @@ export const CircleCarGame = () => {
     const animate = () => {
 
       setCarPosition(prev => {
-        if (prev.x > 600) {
+        if (prev.x > 800) {
           return { x: -100, y: 500 };
         }
 
@@ -323,7 +323,6 @@ export const CircleCarGame = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       />
-      <p>Draw a circle to create wheels for your car!</p>
       <div style={{ marginTop: '20px' }}>
         <button 
           onClick={handleReset}
