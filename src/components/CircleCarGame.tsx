@@ -156,11 +156,9 @@ export const CircleCarGame = () => {
     setIsAnimating(true);
     setIsWobbling(!checkCircleQuality());
     const baseSpeed = 2;
-    let lastTime = performance.now();
     
     // Animate car movement with physics
-    const animate = (currentTime: number) => {
-      lastTime = currentTime;
+    const animate = () => {
 
       setCarPosition(prev => {
         if (prev.x > 800) {
