@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# Draw Your Own Wheels
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A silly little browser game where your drawing skills determine how well your car drives. Draw a perfect circle, and your car cruises smoothly. Draw something wonky... well, good luck with that ride.
 
-Currently, two official plugins are available:
+## What's This All About?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You know how kids draw wobbly circles and call them wheels? This game takes that idea and runs with it. You draw a shape, and the game turns it into actual wheels for a car. The better your circle, the smoother the ride. If your drawing skills aren't quite Leonardo da Vinci level, you'll get to watch your car bounce and wobble down the road in style.
 
-## Expanding the ESLint configuration
+## How to Play
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Just three simple steps:
+1. Draw something roughly circle-shaped on the canvas
+2. Watch as it becomes the wheels for your car
+3. Laugh at (or admire) the results of your artistic skills
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Your car will use the exact shape you drew for both wheels. Draw well, and you'll get a smooth ride. Draw badly, and... let's just say it's entertaining.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Try It Yourself
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Want to give it a shot? Here's how to get it running:
+
+```bash
+git clone https://github.com/nijamitsu/circle-car-game.git
+cd circle-car-game
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open up your browser and prepare to question your circle-drawing abilities.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## The Tech Stuff
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Built with React, TypeScript, and Vite because sometimes you need modern tools to properly simulate wonky wheels. Uses HTML Canvas for drawing and some basic physics to make your questionable circles come to life as arguably functional wheels.
+
+Works on both desktop and mobile, so you can create entertaining vehicular disasters wherever you go.
+
+## Contributing
+
+Found a bug? Think you can make the car's suffering even more entertaining? Feel free to open an issue or submit a pull request.
+
+## License
+
+MIT - Go wild, make cars with square wheels if you want to. I'm not judging.
