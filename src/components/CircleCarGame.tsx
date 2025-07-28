@@ -9,7 +9,7 @@ export const CircleCarGame = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [points, setPoints] = useState<Point[]>([]);
-  const [carPosition, setCarPosition] = useState({ x: -100, y: 500 }); // Start off-screen at road level
+  const [carPosition, setCarPosition] = useState({ x: 0, y: 500 }); // Start off-screen at road level
   const [isAnimating, setIsAnimating] = useState(false);
   const [isWobbling, setIsWobbling] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -18,7 +18,7 @@ export const CircleCarGame = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 800;
+    canvas.width = 400;
     canvas.height = 600;
     drawCanvas();
   }, [points, carPosition, isWobbling, rotation]);
@@ -48,7 +48,7 @@ export const CircleCarGame = () => {
         ctx.lineTo(point.x, point.y);
       });
       ctx.strokeStyle = '#000';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1;
       ctx.stroke();
     }
 
@@ -323,6 +323,7 @@ export const CircleCarGame = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       />
+      <p>Draw a circle to create wheels for your car!</p>
       <div style={{ marginTop: '20px' }}>
         <button 
           onClick={handleReset}
