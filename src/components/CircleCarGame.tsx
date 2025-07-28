@@ -9,7 +9,7 @@ export const CircleCarGame = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [points, setPoints] = useState<Point[]>([]);
-  const [carPosition, setCarPosition] = useState({ x: 0, y: 500 }); // Start off-screen at road level
+  const [carPosition, setCarPosition] = useState({ x: -100, y: 500 }); // Start off-screen at road level
   const [isAnimating, setIsAnimating] = useState(false);
   const [isWobbling, setIsWobbling] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -18,8 +18,8 @@ export const CircleCarGame = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 400;
-    canvas.height = 600;
+    canvas.width = 600;
+    canvas.height = 400;
     drawCanvas();
   }, [points, carPosition, isWobbling, rotation]);
 
@@ -35,7 +35,7 @@ export const CircleCarGame = () => {
     // Draw road
     ctx.beginPath();
     ctx.moveTo(0, 500);
-    ctx.lineTo(800, 500);
+    ctx.lineTo(canvas.width, 500);
     ctx.strokeStyle = '#333';
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -161,7 +161,7 @@ export const CircleCarGame = () => {
     const animate = () => {
 
       setCarPosition(prev => {
-        if (prev.x > 800) {
+        if (prev.x > 600) {
           return { x: -100, y: 500 };
         }
 
