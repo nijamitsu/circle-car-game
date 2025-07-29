@@ -18,9 +18,24 @@ export const CircleCarGame = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 800;
-    canvas.height = 600;
-    drawCanvas();
+    // Set canvas dimensions based on window size, with a max size of 800x600
+    const updateCanvasSize = () => {
+      const width = Math.min(window.innerWidth, 800); // Ensure canvas width does not exceed browser width
+      const height = Math.min(window.innerHeight, 600);
+      canvas.width = width;
+      canvas.height = height;
+      drawCanvas();
+    };
+
+    // Initial size setup
+    updateCanvasSize();
+
+    // Update canvas size on window resize
+    window.addEventListener('resize', updateCanvasSize);
+
+    return () => {
+      window.removeEventListener('resize', updateCanvasSize);
+    };
   }, [points, carPosition, isWobbling, rotation]);
 
   const drawCanvas = () => {
@@ -35,7 +50,7 @@ export const CircleCarGame = () => {
     // Draw road
     ctx.beginPath();
     ctx.moveTo(0, 500);
-    ctx.lineTo(800, 500);
+    ctx.lineTo(canvas.width, 500);
     ctx.strokeStyle = '#333';
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -161,7 +176,10 @@ export const CircleCarGame = () => {
     const animate = () => {
 
       setCarPosition(prev => {
-        if (prev.x > 800) {
+        const canvas = canvasRef.current;
+        if (!canvas) return prev;
+        
+        if (prev.x > canvas.width) {
           return { x: -100, y: 500 };
         }
 
@@ -311,10 +329,10 @@ export const CircleCarGame = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
+    <div style={{ textAlign: 'center', padding: '20px', maxWidth: '100%', overflow: 'hidden' }}>
       <canvas
         ref={canvasRef}
-        style={{ border: '1px solid #ccc' }}
+        style={{ border: '1px solid #ccc', maxWidth: '100%' }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
