@@ -77,7 +77,7 @@ export const CircleCarGame = () => {
       ctx.translate(-(carPosition.x + 20), -(carPosition.y - 60));
       
       // Car body
-      ctx.fillStyle = '#4a90e2';
+      ctx.fillStyle = '#4a90e5';
       ctx.fillRect(carPosition.x - 40, carPosition.y - 80, 120, 40); // Moved up relative to wheels
       
       ctx.restore();
